@@ -10,10 +10,10 @@ const isValidCoordinates = require('is-valid-coordinates')
 router.post("/", async (req, res) => {
     // The desired component of the address we want our api to return
     const DESIRED_ADR_COMP = "country";
-    const lat = req.body.lat;
-    const lon = req.body.lon; 
+    const lat = Number(req.body.lat);
+    const lon = Number(req.body.lon); 
 
-    if(!isValidCoordinates(Number(lon), Number(lat))){
+    if(!isValidCoordinates(lon, lat)){
         return res.status(400).json({params:"Oops! Please check you entered the latitude and longitude correctly and try again!"});
     }
 
